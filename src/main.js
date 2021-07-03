@@ -1,5 +1,12 @@
-import { createApp } from "vue";
-import App from "./App.vue";
-import store from "./store";
+import { createWebsiteApp } from './website/main.js'
+import { createEditorApp } from './editor/main.js'
+import store from './store'
 
-createApp(App).use(store).mount("#app");
+const websiteApp = createWebsiteApp()
+websiteApp.use(store)
+
+const editorApp = createEditorApp()
+editorApp.use(store)
+
+websiteApp.mount('#website')
+editorApp.mount('#editor')

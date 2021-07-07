@@ -1,10 +1,18 @@
 <template>
   <div>
-    <h2>Counting editor</h2>
-    <template v-for="(counter, name) in counters" :key="name">
-      {{ name }}
-      <Counter :modelValue="counter" @update:modelValue="setCounter(name, $event)"></Counter>
-    </template>
+    <div class="grid grid-cols-2 gap-2">
+      <div class="min-h-screen p-2 bg-purple-200">
+        <h2 class="text-xl text-purple-700 font-bold">Editor</h2>
+        <template v-for="(counter, name) in counters" :key="name">
+          {{ name }}
+          <Counter :modelValue="counter" @update:modelValue="setCounter(name, $event)"></Counter>
+        </template>
+      </div>
+      <div class="min-h-screen p-2 bg-green-200">
+        <h2 class="text-xl text-green-700 font-bold">Website</h2>
+        <iframe id="iframe" src="/_website/index.html"></iframe>
+      </div>
+    </div>
   </div>
 </template>
 

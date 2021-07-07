@@ -4,16 +4,16 @@
     <ul>
       <li v-for="(counter, name) in counters" :key="name">{{ name }}: {{ counter }}</li>
     </ul>
-    <Counter :modelValue="counters['Aurélie']" @update:modelValue="setAurelie($event)"></Counter>
+    <!-- <Counter :modelValue="counters['Aurélie']" @update:modelValue="setAurelie($event)"></Counter> -->
   </div>
 </template>
 
 <script>
-import Counter from '@/common/components/Counter'
+// import Counter from '@/common/components/Counter'
 
 export default {
   name: 'AppWebsite',
-  components: { Counter },
+  // components: { Counter },
   computed: {
     counters() {
       return this.$store.state.counters

@@ -1,5 +1,5 @@
 import AppWebsite from './AppWebsite.vue'
+import { createApp } from 'vue'
 
-const wwLib = window.parent.wwLib
 const el = document.getElementById('website')
-wwLib.createApp(AppWebsite).use(wwLib.store).mount(el)
+createApp(AppWebsite).use(window.wwLib.store).mount(el)

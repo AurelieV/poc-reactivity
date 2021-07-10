@@ -11,6 +11,12 @@
 </head>
 
 <body>
+    <script>
+        const wwLib = window.parent.wwLib
+        window.wwLib = wwLib
+        window.Vue = wwLib.Vue
+        window.__VUE_HMR_RUNTIME__ = window.parent.__VUE_HMR_RUNTIME__
+    </script>
     <div id="website"></div>
 </body>
 

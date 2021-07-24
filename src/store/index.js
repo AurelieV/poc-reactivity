@@ -1,21 +1,72 @@
 import { createStore } from 'vuex'
+import set from 'lodash.set'
 
 export default createStore({
   state: {
-    counters: {
-      Lu_Ks: 0,
-      Aurélie: 0,
+    currentView: 'default',
+    elements: {
+      'el-1': {
+        style: {
+          default: {
+            bgColor: 'bg-blue-500',
+          },
+          mobile: {
+            bgColor: 'bg-red-500',
+          },
+        },
+        content: {
+          default: {
+            text: 'Pouet',
+          },
+        },
+        name: 'Blue one',
+      },
+      'el-2': {
+        style: {
+          default: {
+            bgColor: 'bg-pink-500',
+          },
+        },
+        content: {
+          default: {
+            text: 'Pouet',
+          },
+        },
+        name: 'Blue two',
+      },
+      'el-3': {
+        style: {
+          default: {
+            bgColor: 'bg-red-500',
+          },
+        },
+        content: {
+          default: {
+            text: 'Pouet',
+          },
+        },
+        name: 'Blue trois',
+      },
     },
+    selectionId: null,
   },
   mutations: {
-    setCount(state, { id, value }) {
-      state.counters[id] = value
+    selectElement(state, elementId) {
+      state.selectionId = elementId
+    },
+    setProperty(state, { elementId, path, value }) {
+      set(state.elements[elementId], path, value)
+    },
+    setCurrentView(state, view) {
+      state.currentView = view
     },
   },
-  actions: {
-    setCount({ commit }, payload) {
-      commit('setCount', payload)
+  actions: {},
+  getters: {
+    getElement: (state) => (id) => {
+      return state.elements[id]
     },
+    getSelectedElement: (state) => (state.selectionId ? state.elements[state.selectionId] : null),
+    getSelectedElementId: (state) => state.selectionId,
   },
-  modules: {},
 })

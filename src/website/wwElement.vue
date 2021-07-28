@@ -1,10 +1,10 @@
 <template>
   <div
-    :class="[`${style.bgColor}`, { 'outline-black': wwElementState.isSelected }]"
+    :class="[`${content.bgColor}`, { 'outline-black': wwElementState.isSelected }]"
     class="w-20 h-20"
     @click="selectElement"
   >
-    <SimpleText :wwElementState="wwElementState" :content="element.content"></SimpleText>
+    <SimpleText :wwElementState="wwElementState" :content="content"></SimpleText>
   </div>
 </template>
 
@@ -14,6 +14,7 @@ import { reactive, toRefs } from 'vue'
 import { useStore } from 'vuex'
 
 import { eagerComputed } from '@/common/helpers/reactivity'
+import useContent from '@/common/helpers/useContent'
 
 export default {
   components: { SimpleText },
@@ -28,7 +29,7 @@ export default {
       id: elementId,
     })
 
-    return { wwElementState }
+    return { wwElementState, content: useContent(elementId) }
   },
   computed: {
     element() {
@@ -36,13 +37,6 @@ export default {
     },
     state() {
       return this.$store.state.currentView
-    },
-    style() {
-      if (this.state === 'default') {
-        return this.element.style.default
-      } else {
-        return { ...this.element.style.default, ...this.element.style.mobile }
-      }
     },
   },
   methods: {

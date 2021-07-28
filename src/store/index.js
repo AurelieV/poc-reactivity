@@ -6,43 +6,34 @@ export default createStore({
     currentView: 'default',
     elements: {
       'el-1': {
-        style: {
+        content: {
           default: {
             bgColor: 'bg-blue-500',
+            text: 'Pouet',
           },
           mobile: {
             bgColor: 'bg-red-500',
           },
         },
-        content: {
-          default: {
-            text: 'Pouet',
-          },
-        },
         name: 'Blue one',
       },
       'el-2': {
-        style: {
-          default: {
-            bgColor: 'bg-pink-500',
-          },
-        },
         content: {
           default: {
-            text: 'Pouet',
+            bgColor: 'bg-pink-500',
+            text: 'Coucou',
           },
         },
         name: 'Blue two',
       },
       'el-3': {
-        style: {
-          default: {
-            bgColor: 'bg-red-500',
-          },
-        },
         content: {
           default: {
-            text: 'Pouet',
+            bgColor: 'bg-red-500',
+            text: 'Coucou',
+          },
+          mobile: {
+            text: 'Coucou sur mobile',
           },
         },
         name: 'Blue trois',
